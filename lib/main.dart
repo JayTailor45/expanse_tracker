@@ -85,6 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      transactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   void startAddNewTransaction(BuildContext context) {
     showModalBottomSheet(context: context, builder: (_) {
       return GestureDetector(
@@ -117,7 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Chart(_recentTransactions),
             TransactionList(
-              transactionList: transactions,),
+              transactionList: transactions,
+              removeTx: _deleteTransaction,
+            ),
           ],
         ),
       ),
