@@ -10,8 +10,9 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: transactionList.map((obj) {
+      height: 342, // TODO: Figure out something to get windows height dynamically
+      child: ListView.builder(
+        itemBuilder: (BuildContext context,int index) {
           return Card(
             child: Row(
               children: <Widget>[
@@ -25,7 +26,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$ ${obj.amount.toStringAsFixed(2)}',
+                    '\$ ${transactionList[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -36,14 +37,14 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      obj.title,
+                      transactionList[index].title,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      DateFormat.yMMMd().format(obj.date),
+                      DateFormat.yMMMd().format(transactionList[index].date),
                       style: TextStyle(
                         color: Colors.grey,
                       ),
@@ -53,7 +54,8 @@ class TransactionList extends StatelessWidget {
               ],
             ),
           );
-        }).toList(),
+        },
+        itemCount: transactionList.length,
       ),
     );
   }

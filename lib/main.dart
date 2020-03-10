@@ -25,18 +25,21 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home page'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              child: Text('CHART'),
-              elevation: 5,
+      body: Container(
+        height: 560, // TODO: Figure out something to get windows height dynamically
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                child: Text('CHART'),
+                elevation: 5,
+              ),
             ),
-          ),
-          UserTransactions(),
-        ],
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }
