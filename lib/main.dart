@@ -11,9 +11,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        accentColor: Colors.blue,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          title: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          )
+        ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -30,18 +48,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Pen',
-      amount: 1.5,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Water Colors',
-      amount: 10.0,
-      date: DateTime.now(),
-    ),
+//    Transaction(
+//      id: 't1',
+//      title: 'Pen',
+//      amount: 1.5,
+//      date: DateTime.now(),
+//    ),
+//    Transaction(
+//      id: 't2',
+//      title: 'Water Colors',
+//      amount: 10.0,
+//      date: DateTime.now(),
+//    ),
   ];
 
   void _addTransaction(String title, double amount) {
@@ -70,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home page'),
+        title: Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
             icon: Icon(

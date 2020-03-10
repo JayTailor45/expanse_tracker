@@ -11,7 +11,22 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 342, // TODO: Figure out something to get windows height dynamically
-      child: ListView.builder(
+      child:
+      transactionList.isEmpty ?
+        Column(children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: 200,
+            child: Image.asset('assets/images/waiting.png', fit: BoxFit.cover,),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text('No transactions added yet!'),
+        ])
+          : ListView.builder(
         itemBuilder: (BuildContext context,int index) {
           return Card(
             child: Row(
@@ -22,7 +37,7 @@ class TransactionList extends StatelessWidget {
                     vertical: 15,
                   ),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2),
+                    border: Border.all(color: Theme.of(context).accentColor, width: 2),
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
@@ -30,7 +45,7 @@ class TransactionList extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple),
+                        color: Theme.of(context).accentColor),
                   ),
                 ),
                 Column(
@@ -38,10 +53,7 @@ class TransactionList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       transactionList[index].title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.title,
                     ),
                     Text(
                       DateFormat.yMMMd().format(transactionList[index].date),
